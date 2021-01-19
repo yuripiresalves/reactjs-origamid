@@ -1,48 +1,28 @@
 import React from 'react';
+import Header from './Header';
+import Home from './Home';
+import Produtos from './Produtos';
 
-const luana = {
-  cliente: 'Luana',
-  idade: 27,
-  compras: [
-    { nome: 'Notebook', preco: 'R$ 2500' },
-    { nome: 'Geladeira', preco: 'R$ 3000' },
-    { nome: 'Smartphone', preco: 'R$ 1500' },
-  ],
-  ativa: true,
-};
-
-const mario = {
-  cliente: 'Mario',
-  idade: 31,
-  compras: [
-    { nome: 'Notebook', preco: 'R$ 2500' },
-    { nome: 'Geladeira', preco: 'R$ 3000' },
-    { nome: 'Smartphone', preco: 'R$ 1500' },
-    { nome: 'Guitarra', preco: 'R$ 3500' },
-  ],
-  ativa: false,
-};
+// Replique a interface como a apresentada na aula
+// Utilize a array abaixo para mostrar os produtos
+// Quebre em componentes o que precisar ser reutilizado
+// Dica: const { pathname } = window.location; (puxa o caminho do URL)
 
 const App = () => {
-  const dados = luana;
+  const { pathname } = window.location;
 
-  const total = dados.compras
-    .map((item) => Number(item.preco.replace('R$ ', '')))
-    .reduce((a, b) => a + b);
+  let Pagina;
+  if (!pathname.includes('produtos')) {
+    Pagina = Home;
+  } else {
+    Pagina = Produtos;
+  }
 
   return (
-    <div>
-      <p>Nome: {dados.cliente}</p>
-      <p>Idade: {dados.idade}</p>
-      <p>
-        Situação:{' '}
-        <span style={{ color: dados.ativa ? 'green' : 'red' }}>
-          {dados.ativa ? 'Ativa' : 'Inativa'}
-        </span>
-      </p>
-      <p>Total gasto: R$ {total}</p>
-      {total > 10000 && <p>Você está gastando muito.</p>}
-    </div>
+    <section>
+      <Header />
+      <Pagina />
+    </section>
   );
 };
 
