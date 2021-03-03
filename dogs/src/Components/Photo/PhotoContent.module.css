@@ -52,6 +52,12 @@
   .img {
     grid-row: 1;
   }
+  .author {
+    padding-right: 2rem;
+  }
+  .single .author {
+    padding-right: 0;
+  }
 }
 
 .author {
