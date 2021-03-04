@@ -65,7 +65,7 @@
   }
 }
 
-@media (max-width: 64rem) {
+@media (max-width: 40rem) {
   .form {
     padding-bottom: 1rem;
   }
